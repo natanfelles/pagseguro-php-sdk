@@ -7,6 +7,7 @@ require __DIR__ . '/../../vendor/autoload.php';
 	'C30774339ADE4141A38A41C3EBF5AA5F'
 );
 \PagSeguro\Configuration\Configure::setEnvironment('sandbox');
+\PagSeguro\Configuration\Configure::setCharset('UTF-8');
 
 ?>
 	<!DOCTYPE html>
@@ -19,6 +20,10 @@ require __DIR__ . '/../../vendor/autoload.php';
 	</html>
 <?php
 $payment = new \PagSeguro\Domains\Requests\Payment();
+
+// URL's
+$payment->setRedirectUrl('http://localhost:8080/orders');
+$payment->setNotificationUrl('http://localhost:8080/notification');
 
 // Moeda
 $payment->setCurrency('BRL');
